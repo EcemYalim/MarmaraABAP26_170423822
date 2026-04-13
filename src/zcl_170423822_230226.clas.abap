@@ -91,7 +91,7 @@ CLASS zcl_170423822_230226 IMPLEMENTATION.
     out->write( |lv_character = { lv_character }| ).
 
     lv_integer = 2026.
-    lv_character = |Class of { lv_integer }|.
+    lv_character = |Classof { lv_integer }|.
     out->write( |lv_character = { lv_character }| ).
 
     lv_character = |{ lv_integer }|.
