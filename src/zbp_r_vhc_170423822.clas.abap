@@ -1,8 +1,6 @@
 class ZBP_R_VHC_170423822 definition
   public
-  abstract
-  final
-  for behavior of ZR_VHC_170423822 .
+  create private .
 
 public section.
 protected section.

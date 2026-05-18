@@ -1,62 +1,13 @@
-CLASS zcl_170423822_vehicle_demo_2 DEFINITION
-  PUBLIC
-  FINAL
-  CREATE PUBLIC .
+class ZCL_170423822_VEHICLE_DEMO_2 definition
+  public
+  create private .
 
-  PUBLIC SECTION.
-
-    INTERFACES if_oo_adt_classrun .
-  PROTECTED SECTION.
-  PRIVATE SECTION.
+public section.
+protected section.
+private section.
 ENDCLASS.
 
 
 
-CLASS zcl_170423822_vehicle_demo_2 IMPLEMENTATION.
-
-
-  METHOD if_oo_adt_classrun~main.
-
-    DATA: lo_vehicle TYPE REF TO zcl_vehicle.
-
-    SELECT SINGLE *
-    FROM zvhc_170423822
-    WHERE id = '1'
-    INTO @DATA(ls_data).
-
-    " TYPE alanına göre doğru nesne oluşturulur. (Factory Mantığı)
-    CASE ls_data-type.
-      WHEN 'CAR'.
-        lo_vehicle = NEW  zcl_car(
-        iv_brand = CONV #( ls_data-brand )
-        iv_model = CONV #( ls_data-model )
-        iv_doors = ls_data-doors ).
-
-      WHEN 'TRUCK'.
-        lo_vehicle = NEW  zcl_truck(
-        iv_brand = CONV #( ls_data-brand )
-        iv_model = CONV #( ls_data-model )
-        iv_capacity = ls_data-capacity ).
-
-      WHEN 'BUS'.
-        lo_vehicle = NEW  zcl_bus(
-        iv_brand = CONV #( ls_data-brand )
-        iv_model = CONV #( ls_data-model )
-        iv_passengers = ls_data-passengers ).
-
-      WHEN 'MOTORCYCLE'.
-        lo_vehicle = NEW  zcl_motorcycle(
-        iv_brand = CONV #( ls_data-brand )
-        iv_model = CONV #( ls_data-model )
-        iv_engine_cc = ls_data-engine_cc ).
-
-
-    ENDCASE.
-
-    " HANGİ NESNE İSE ONUN METHODU ÇALIŞIR
-
-    out->write( |Type: { lo_vehicle->get_type(  ) }| ).
-    out->write( lo_vehicle->get_description(  ) ).
-    out->write( '-----------------' ).
-  ENDMETHOD.
+CLASS ZCL_170423822_VEHICLE_DEMO_2 IMPLEMENTATION.
 ENDCLASS.
